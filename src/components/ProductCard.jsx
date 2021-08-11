@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductDataService from "../services/product.service";
-import DeleteModal from "./DeleteModal";
 
 function ProductCard() {
   //declaration state variable which is used to verify whether the data has already been obtained from api
@@ -59,7 +58,7 @@ function ProductCard() {
   //sorting products by count
   const productListByCount = products
     .sort((a, b) => {
-      return a.count - b.count
+      return a.count - b.count;
     })
     .map((card) => {
       return (
@@ -93,7 +92,17 @@ function ProductCard() {
                   </span>
                 </div>
                 <div className="col float-end ms-2">
-                  <DeleteModal remove={() => remove(card.id)}></DeleteModal>
+                  <button
+                    className="btn btn-danger mt-3 flaot-end"
+                    onClick={() => {
+                      let answer = window.confirm("Are you sure?");
+                      if (answer) {
+                        remove(card.id);
+                      }
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
                 <Link to={`/products/${card.id}`}>
                   <button
@@ -153,7 +162,17 @@ function ProductCard() {
                   </span>
                 </div>
                 <div className="col float-end ms-2">
-                  <DeleteModal remove={() => remove(card.id)}></DeleteModal>
+                  <button
+                    className="btn btn-danger mt-3 flaot-end"
+                    onClick={() => {
+                      let answer = window.confirm("Are you sure?");
+                      if (answer) {
+                        remove(card.id);
+                      }
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
                 <Link to={`/products/${card.id}`}>
                   <button
