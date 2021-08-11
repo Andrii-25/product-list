@@ -59,13 +59,7 @@ function ProductCard() {
   //sorting products by count
   const productListByCount = products
     .sort((a, b) => {
-      if (a.count > b.count) {
-        return -1;
-      }
-      if (a.count < b.count) {
-        return 1;
-      }
-      return 0;
+      return a.count - b.count
     })
     .map((card) => {
       return (
@@ -119,10 +113,10 @@ function ProductCard() {
   //sorting products by name
   const productListByName = products
     .sort((a, b) => {
-      if (a.name > b.name) {
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
         return -1;
       }
-      if (a.name < b.name) {
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
         return 1;
       }
       return 0;
